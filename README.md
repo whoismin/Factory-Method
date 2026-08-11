@@ -52,35 +52,8 @@ A interface `Veiculo` define o contrato `exibirDetalhes()`, implementado pelas c
 A classe `MainFactoryMethod` é o cliente: sua interface Swing possui dois botões que chamam `fabrica.criarVeiculo(tipo)`. Em nenhum momento o cliente executa `new Carro()` ou `new Moto()` diretamente — toda a criação passa pela fábrica.
 
 ### Diagrama de classes — Factory Method
+<img width="619" height="762" alt="d1 drawio" src="https://github.com/user-attachments/assets/f5f9c255-7e22-415f-ac04-43fb262770a3" />
 
-```mermaid
-classDiagram
-    class Veiculo {
-        <<interface>>
-        +exibirDetalhes() void
-    }
-    class Carro {
-        +exibirDetalhes() void
-    }
-    class Moto {
-        +exibirDetalhes() void
-    }
-    class VeiculoFactory {
-        +criarVeiculo(tipo: String) Veiculo
-    }
-    class MainFactoryMethod {
-        -fabrica: VeiculoFactory
-    }
-
-    Veiculo <|.. Carro
-    Veiculo <|.. Moto
-    VeiculoFactory ..> Veiculo : cria
-    VeiculoFactory ..> Carro : instancia
-    VeiculoFactory ..> Moto : instancia
-    MainFactoryMethod --> VeiculoFactory : usa
-```
-
----
 
 ## 3. Parte 2 — Abstract Factory
 
@@ -112,60 +85,7 @@ Esse é um efeito colateral conhecido do padrão Abstract Factory: ele facilita 
 
 ### Diagrama de classes — Abstract Factory (já com SUV)
 
-```mermaid
-classDiagram
-    class Sedan {
-        <<interface>>
-        +exibirPortaMalas() void
-    }
-    class Hatch {
-        <<interface>>
-        +exibirConsumo() void
-    }
-    class SUV {
-        <<interface>>
-        +exibirDesempenho() void
-    }
-    class MontadoraFactory {
-        <<interface>>
-        +criarSedan() Sedan
-        +criarHatch() Hatch
-        +criarSUV() SUV
-    }
-    class FiatFactory {
-        +criarSedan() Sedan
-        +criarHatch() Hatch
-        +criarSUV() SUV
-    }
-    class VolksFactory {
-        +criarSedan() Sedan
-        +criarHatch() Hatch
-        +criarSUV() SUV
-    }
-    class FiatCronos
-    class FiatArgo
-    class FiatPulse
-    class VolksVirtus
-    class VolksPolo
-    class VolksTCross
-
-    MontadoraFactory <|.. FiatFactory
-    MontadoraFactory <|.. VolksFactory
-
-    Sedan <|.. FiatCronos
-    Hatch <|.. FiatArgo
-    SUV <|.. FiatPulse
-    Sedan <|.. VolksVirtus
-    Hatch <|.. VolksPolo
-    SUV <|.. VolksTCross
-
-    FiatFactory ..> FiatCronos : cria
-    FiatFactory ..> FiatArgo : cria
-    FiatFactory ..> FiatPulse : cria
-    VolksFactory ..> VolksVirtus : cria
-    VolksFactory ..> VolksPolo : cria
-    VolksFactory ..> VolksTCross : cria
-```
+<img width="1425" height="717" alt="d1-Página-2 drawio" src="https://github.com/user-attachments/assets/208fc3d5-cf28-49ec-a76e-b1152523f420" />
 
 ---
 
